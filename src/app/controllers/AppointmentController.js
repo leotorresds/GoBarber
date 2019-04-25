@@ -25,7 +25,7 @@ class AppointmentController {
   async show (req, res) {
     const date = moment().date(25)
     const appointments = await Appointment.findAll({
-      include: [{ model: User }],
+      include: [{ model: User, as: 'user' }],
       where: {
         provider_id: req.session.user.id,
         date: {
